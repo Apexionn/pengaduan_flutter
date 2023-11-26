@@ -83,28 +83,47 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Login',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Login',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 20),
+          // Apply background color and border radius to the input fields
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0),
             ),
-            const SizedBox(height: 20),
-            TextField(
+            child: TextField(
               controller: usernameController,
-              decoration: const InputDecoration(labelText: 'Username'),
+              decoration: InputDecoration(
+                labelText: 'Username',
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                border: InputBorder.none,
+              ),
             ),
-            const SizedBox(height: 20),
-            TextField(
+          ),
+          const SizedBox(height: 20),
+          // Apply background color and border radius to the input fields
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: TextField(
               controller: passwordController,
               obscureText: !isPasswordVisible,
               decoration: InputDecoration(
                 labelText: 'Password',
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                border: InputBorder.none,
                 suffixIcon: IconButton(
                   icon: Icon(
                     isPasswordVisible ? Icons.visibility : Icons.visibility_off,
@@ -117,34 +136,46 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
+          ),
+          const SizedBox(height: 20),
+          // Make the login button wider
+          Container(
+            width: double.infinity,
+            child: ElevatedButton(
               onPressed: () {
                 login();
               },
-              child: const Text('Login'),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Doesn't have an account?"),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RegisterPage(),
-                      ),
-                    );
-                  },
-                  child: const Text('Register Now!'),
+              // Apply background color and border radius to the button
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue, // Change the color as needed
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-              ],
+              ),
+              child: const Text('Login', style: TextStyle(color: Colors.white)),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("Doesn't have an account?"),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterPage(),
+                    ),
+                  );
+                },
+                child: const Text('Register Now!', style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }
