@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
               },
               child: const CircleAvatar(
                 radius: 15,
-                backgroundImage: AssetImage('images/Arlecchino.jpeg'),
+                backgroundImage: AssetImage('assets/images/Arlecchino.jpeg'),
               ),
             ),
           ),
