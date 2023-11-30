@@ -7,10 +7,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('My Profile', style: TextStyle(color: Colors.black)),
-        // backgroundColor: Color.fromARGB(255, 3, 252, 177),
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Padding(
@@ -35,23 +36,23 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 32),
-            buildInfoRow('NIK', '${user['nik']}'),
-            buildInfoRow('Name', '${user['nama']}'),
-            buildInfoRow('Telp', '${user['telp']}'),
+            buildInfoRow('NIK', '${user['nik']}', screenWidth),
+            buildInfoRow('Name', '${user['nama']}', screenWidth),
+            buildInfoRow('Telp', '${user['telp']}', screenWidth),
           ],
         ),
       ),
     );
   }
 
-  Widget buildInfoRow(String label, String value) {
+  Widget buildInfoRow(String label, String value, double screenWidth) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('$label ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(height: 4),
         Container(
-          width: 350, // Set your desired fixed width
+          width: screenWidth * 1, 
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.grey[200],

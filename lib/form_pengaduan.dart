@@ -45,13 +45,14 @@ class _FormPengaduanPageState extends State<FormPengaduanPage> {
         (key, value) => MapEntry(key, value.toString()),
       );
 
-      if (pickedFile != null) {
+     if (pickedFile != null) {
         http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse(apiUrl))
           ..fields.addAll(pengaduanDataString)
           ..files.add(
-            await http.MultipartFile.fromPath(
+            http.MultipartFile.fromBytes(
               'foto',
-              pickedFile!.path!,
+              pickedFile!.bytes!,
+              filename: pickedFile!.name,
               contentType: MediaType('application', 'octet-stream'),
             ),
           );

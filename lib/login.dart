@@ -169,7 +169,7 @@ Widget build(BuildContext context) {
                     ),
                   );
                 },
-                child: const Text('Register Now!', style: TextStyle(color: Colors.white)),
+                child: const Text('Register Now!', style: TextStyle(color: Colors.blue)),
               ),
             ],
           ),
