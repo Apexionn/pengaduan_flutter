@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
     try {
       print('NIK: ${widget.user['nik']}');
       final response = await http.get(
-        Uri.parse('http://192.168.100.20:8000/api/get-pengaduan/${widget.user['nik']}'),
+        Uri.parse('http://172.20.10.10:8000/api/get-pengaduan/${widget.user['nik']}'),
       );
 
       if (response.statusCode == 200) {
@@ -147,15 +147,21 @@ class _HomeState extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => FormPengaduanPage(user: widget.user)),
-                      );
-                    },
-                    child: Text('Buat Pengaduan'),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FormPengaduanPage(user: widget.user)),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue, // Set the background color to blue
                   ),
+                  child: Text(
+                    'Buat Pengaduan',
+                    style: TextStyle(color: Colors.white), // Set text color to white
+                  ),
+                ),
                   SizedBox(height: 16),
                   Text(
                     'Pengaduan Anda:',

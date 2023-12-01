@@ -33,7 +33,7 @@ class _FormPengaduanPageState extends State<FormPengaduanPage> {
 
   Future<void> _submitPengaduan() async {
     try {
-      String apiUrl = "http://192.168.100.20:8000/api/add-pengaduan";
+      String apiUrl = "http://172.20.10.10:8000/api/add-pengaduan";
 
       Map<String, dynamic> pengaduanData = {
         'nik': widget.user['nik'],
@@ -186,26 +186,45 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
                     onPressed: () {
                       _pickFile();
                     },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue, 
+                    onPrimary: Colors.white, 
+                  ),
                     child: Text('Choose Photo'),
                   ),
                 ],
               ),
-              // Display the picked file if available
               if (pickedFile != null)
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
-                  height: 100,
-                  child: Text(
-                    'File: ${pickedFile!.name}',
-                    style: TextStyle(fontSize: 16),
+                  height: 150,
+                  child: Column(
+                    children: [
+                      Text(
+                        'Selected Image:',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      SizedBox(height: 10),
+                      Image.memory(
+                        pickedFile!.bytes!,
+                        height: 100,
+                        width: 100,
+                      ),
+                    ],
                   ),
                 ),
               SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  _submitPengaduan();
-                },
-                child: Text('Submit Pengaduan'),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    _submitPengaduan();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    onPrimary: Colors.white,
+                  ),
+                  child: Text('Submit Pengaduan'),
+                ),
               ),
             ],
           ),

@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController telpController = TextEditingController();
 
   Future<void> register() async {
-    final String apiUrl = 'http://192.168.100.20:8000/api/register';
+    final String apiUrl = 'http://172.20.10.10:8000/api/register';
 
     try {
       final response = await http.post(

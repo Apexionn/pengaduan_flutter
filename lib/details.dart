@@ -21,7 +21,7 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Future<void> fetchData() async {
-    final response = await http.get(Uri.parse('http://192.168.100.20:8000/api/tanggapan/${widget.pengaduanDetails['id_pengaduan']}'));
+    final response = await http.get(Uri.parse('http://172.20.10.10:8000/api/tanggapan/${widget.pengaduanDetails['id_pengaduan']}'));
     
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
@@ -44,7 +44,7 @@ class _DetailsPageState extends State<DetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Category: ${widget.pengaduanDetails['kategori']}',
+              'Kategori: ${widget.pengaduanDetails['kategori']}',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
@@ -76,7 +76,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Tgl Tanggapan: ${tanggapanList[index]['tgl_tanggapan']}',
+                                  'Tanggal Tanggapan: ${tanggapanList[index]['tgl_tanggapan']}',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -89,7 +89,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  'ID Petugas: ${tanggapanList[index]['id_petugas']}',
+                                  'Nama Petugas: ${tanggapanList[index]['id_petugas']}',
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 SizedBox(height: 8),

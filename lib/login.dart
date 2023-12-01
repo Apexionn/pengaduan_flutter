@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   bool isPasswordVisible = false;
 
   Future<void> login() async {
-    final String apiUrl = 'http://192.168.100.20:8000/api/loginM';
+    final String apiUrl = 'http://172.20.10.10:8000/api/loginM';
 
     try {
       final response = await http.post(
